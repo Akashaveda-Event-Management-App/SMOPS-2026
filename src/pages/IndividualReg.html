@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechConf 2025 - Registration</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'conference-blue': '#3B82F6',
+                        'conference-purple': '#8B5CF6',
+                    },
+                    backdropBlur: {
+                        xs: '2px',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            /* background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #f5576c 75%, #4facfe 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite; */
+        }
+        
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .glass {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .glass-input {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+        }
+        
+        .glass-input::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+        
+        .glass-input:focus {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(59, 130, 246, 0.5);
+            box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+        }
+        
+        .glass-input:focus + .glass-input {
+            border-color: rgba(59, 130, 246, 0.5);
+        }
+        
+        #countryCode:focus + #phone {
+            border-color: rgba(59, 130, 246, 0.5);
+        }
+        
+        .glass-button {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.8), rgba(139, 92, 246, 0.8));
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .glass-button:hover {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.9), rgba(139, 92, 246, 0.9));
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+        
+        .glass-radio {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .glass-radio:hover {
+            background: rgba(255, 255, 255, 0.15);
+        }
+        
+        .floating-orb {
+            position: fixed;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1), transparent);
+            backdrop-filter: blur(2px);
+            pointer-events: none;
+            animation: float 6s ease-in-out infinite;
+            z-index: -1;
+        }
+        
+        .accent-blue {
+            color: #60a5fa;
+        }
+
+        .accent-yellow {
+            color: #fbbf24;
+        }
+
+        .accent-purple {
+            color: #a78bfa;
+        }
+
+        .accent-green {
+            color: #34d399;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+    </style>
+</head>
+<body class="bg-gray-900 min-h-screen py-8 px-4 relative overflow-x-hidden">
+    
+    
+    <div class="max-w-2xl mx-auto relative z-10">
+        <!-- Header -->
+        <div class="text-center mb-8">
+            <div class="inline-flex items-center justify-center w-20 h-20 glass rounded-full mb-6 shadow-2xl">
+                <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+                </svg>
+            </div>
+            <h1 class="text-5xl font-bold text-white mb-4 drop-shadow-lg">SMOPS-2026 </h1>
+            <p class="text-white/90 text-xl mb-2">Join us for the most innovative tech conference of the year</p>
+            <p class="text-white/70 text-sm">April 8th-9th, 2026 • Bangalore, Karnataka</p>
+        </div>
+
+        <!-- Registration Form -->
+        <div class="glass rounded-3xl shadow-2xl p-8 mb-8">
+            <h2 class="text-3xl font-semibold text-white mb-8 text-center">Conference Registration</h2>
+            
+            <form id="registrationForm" class="space-y-8">
+                <!-- Personal Information -->
+                <div class="space-y-6">
+                    <h3 class="text-xl font-medium text-white/90 border-b border-white/20 pb-3">Personal Information</h3>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label for="firstName" class="block text-sm font-medium text-white/90 mb-2">First Name *</label>
+                            <input type="text" id="firstName" name="firstName" required
+                                class="w-full px-4 py-3 glass-input rounded-xl transition duration-300 ease-in-out">
+                        </div>
+                        <div>
+                            <label for="lastName" class="block text-sm font-medium text-white/90 mb-2">Last Name *</label>
+                            <input type="text" id="lastName" name="lastName" required
+                                class="w-full px-4 py-3 glass-input rounded-xl transition duration-300 ease-in-out">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-white/90 mb-2">Email Address *</label>
+                        <input type="email" id="email" name="email" required
+                            class="w-full px-4 py-3 glass-input rounded-xl transition duration-300 ease-in-out">
+                    </div>
+
+                    <div>
+                        <label for="phone" class="block text-sm font-medium text-white/90 mb-2">Phone Number</label>
+                        <div class="flex">
+                            <select id="countryCode" name="countryCode" 
+                                class="w-24 px-2 py-3 glass-input rounded-l-xl transition duration-300 ease-in-out border-r-0">
+                                <option value="+91" class="bg-gray-800 text-white">🇮🇳 +91</option>
+                                <option value="+1" class="bg-gray-800 text-white">🇺🇸 +1</option>
+                                <option value="+44" class="bg-gray-800 text-white">🇬🇧 +44</option>
+                                <option value="+86" class="bg-gray-800 text-white">🇨🇳 +86</option>
+                                <option value="+81" class="bg-gray-800 text-white">🇯🇵 +81</option>
+                                <option value="+82" class="bg-gray-800 text-white">🇰🇷 +82</option>
+                                <option value="+49" class="bg-gray-800 text-white">🇩🇪 +49</option>
+                                <option value="+33" class="bg-gray-800 text-white">🇫🇷 +33</option>
+                                <option value="+39" class="bg-gray-800 text-white">🇮🇹 +39</option>
+                                <option value="+34" class="bg-gray-800 text-white">🇪🇸 +34</option>
+                                <option value="+7" class="bg-gray-800 text-white">🇷🇺 +7</option>
+                                <option value="+55" class="bg-gray-800 text-white">🇧🇷 +55</option>
+                                <option value="+61" class="bg-gray-800 text-white">🇦🇺 +61</option>
+                                <option value="+27" class="bg-gray-800 text-white">🇿🇦 +27</option>
+                                <option value="+65" class="bg-gray-800 text-white">🇸🇬 +65</option>
+                                <option value="+60" class="bg-gray-800 text-white">🇲🇾 +60</option>
+                                <option value="+66" class="bg-gray-800 text-white">🇹🇭 +66</option>
+                                <option value="+84" class="bg-gray-800 text-white">🇻🇳 +84</option>
+                                <option value="+62" class="bg-gray-800 text-white">🇮🇩 +62</option>
+                                <option value="+63" class="bg-gray-800 text-white">🇵🇭 +63</option>
+                                <option value="+92" class="bg-gray-800 text-white">🇵🇰 +92</option>
+                                <option value="+880" class="bg-gray-800 text-white">🇧🇩 +880</option>
+                                <option value="+94" class="bg-gray-800 text-white">🇱🇰 +94</option>
+                                <option value="+977" class="bg-gray-800 text-white">🇳🇵 +977</option>
+                                <option value="+971" class="bg-gray-800 text-white">🇦🇪 +971</option>
+                                <option value="+966" class="bg-gray-800 text-white">🇸🇦 +966</option>
+                                <option value="+20" class="bg-gray-800 text-white">🇪🇬 +20</option>
+                                <option value="+234" class="bg-gray-800 text-white">🇳🇬 +234</option>
+                                <option value="+254" class="bg-gray-800 text-white">🇰🇪 +254</option>
+                                <option value="+52" class="bg-gray-800 text-white">🇲🇽 +52</option>
+                                <option value="+54" class="bg-gray-800 text-white">🇦🇷 +54</option>
+                                <option value="+56" class="bg-gray-800 text-white">🇨🇱 +56</option>
+                                <option value="+57" class="bg-gray-800 text-white">🇨🇴 +57</option>
+                            </select>
+                            <input type="tel" id="phone" name="phone" placeholder="9876543210"
+                                class="flex-1 px-4 py-3 glass-input rounded-r-xl transition duration-300 ease-in-out border-l-0">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label for="company" class="block text-sm font-medium text-white/90 mb-2">Company/Organization</label>
+                        <input type="text" id="company" name="company"
+                            class="w-full px-4 py-3 glass-input rounded-xl transition duration-300 ease-in-out">
+                    </div>
+                </div>
+
+                <!-- Professional Information -->
+                <div class="space-y-6">
+                    <h3 class="text-xl font-medium text-white/90 border-b border-white/20 pb-3">Professional Information</h3>
+                    
+                    <div>
+                        <label for="jobTitle" class="block text-sm font-medium text-white/90 mb-2">Job Title</label>
+                        <input type="text" id="jobTitle" name="jobTitle"
+                            class="w-full px-4 py-3 glass-input rounded-xl transition duration-300 ease-in-out">
+                    </div>
+
+                    <div>
+                        <label for="experience" class="block text-sm font-medium text-white/90 mb-2">Years of Experience</label>
+                        <select id="experience" name="experience"
+                            class="w-full px-4 py-3 glass-input rounded-xl transition duration-300 ease-in-out">
+                            <option value="" class="bg-gray-800 text-white">Select experience level</option>
+                            <option value="0-2" class="bg-gray-800 text-white">0-2 years</option>
+                            <option value="3-5" class="bg-gray-800 text-white">3-5 years</option>
+                            <option value="6-10" class="bg-gray-800 text-white">6-10 years</option>
+                            <option value="10+" class="bg-gray-800 text-white">10+ years</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-white/90 mb-4">Areas of Interest</label>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                            <label class="flex items-center glass-input rounded-lg p-3 cursor-pointer transition duration-300">
+                                <input type="checkbox" name="interests" value="spacecraft-operations" class="text-blue-400 focus:ring-blue-400 border-white/30 rounded bg-transparent">
+                                <span class="ml-2 text-sm text-white/90">Spacecraft Operations</span>
+                            </label>
+                            <label class="flex items-center glass-input rounded-lg p-3 cursor-pointer transition duration-300">
+                                <input type="checkbox" name="interests" value="mission-design" class="text-blue-400 focus:ring-blue-400 border-white/30 rounded bg-transparent">
+                                <span class="ml-2 text-sm text-white/90">Mission Design</span>
+                            </label>
+                            <label class="flex items-center glass-input rounded-lg p-3 cursor-pointer transition duration-300">
+                                <input type="checkbox" name="interests" value="gso-operations" class="text-blue-400 focus:ring-blue-400 border-white/30 rounded bg-transparent">
+                                <span class="ml-2 text-sm text-white/90">GSO Operations</span>
+                            </label>
+                            <label class="flex items-center glass-input rounded-lg p-3 cursor-pointer transition duration-300">
+                                <input type="checkbox" name="interests" value="human-spaceflight" class="text-blue-400 focus:ring-blue-400 border-white/30 rounded bg-transparent">
+                                <span class="ml-2 text-sm text-white/90">Human Spaceflight</span>
+                            </label>
+                            <label class="flex items-center glass-input rounded-lg p-3 cursor-pointer transition duration-300">
+                                <input type="checkbox" name="interests" value="constellation-management" class="text-blue-400 focus:ring-blue-400 border-white/30 rounded bg-transparent">
+                                <span class="ml-2 text-sm text-white/90">Constellation Management</span>
+                            </label>
+                            <label class="flex items-center glass-input rounded-lg p-3 cursor-pointer transition duration-300">
+                                <input type="checkbox" name="interests" value="ground-stations" class="text-blue-400 focus:ring-blue-400 border-white/30 rounded bg-transparent">
+                                <span class="ml-2 text-sm text-white/90">Ground Station Operations</span>
+                            </label>
+                            <label class="flex items-center glass-input rounded-lg p-3 cursor-pointer transition duration-300">
+                                <input type="checkbox" name="interests" value="automation-ai" class="text-blue-400 focus:ring-blue-400 border-white/30 rounded bg-transparent">
+                                <span class="ml-2 text-sm text-white/90">Automation & AI</span>
+                            </label>
+                            <label class="flex items-center glass-input rounded-lg p-3 cursor-pointer transition duration-300">
+                                <input type="checkbox" name="interests" value="cybersecurity" class="text-blue-400 focus:ring-blue-400 border-white/30 rounded bg-transparent">
+                                <span class="ml-2 text-sm text-white/90">Cybersecurity</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ticket Information -->
+                <div class="space-y-6">
+                    <h3 class="text-xl font-medium text-white/90 border-b border-white/20 pb-3">Registration Type *</h3>
+                    
+                    <!-- Early Bird Timer -->
+                    <div id="earlyBirdTimer" class="glass rounded-xl p-4 mb-6 text-center">
+                        <h4 class="text-lg font-semibold text-white mb-2">🚀 Early Bird Offer Ends In:</h4>
+                        <div class="flex justify-center space-x-4 text-2xl font-bold text-accent-yellow">
+                            <div class="text-center">
+                                <div id="days" class="text-3xl text-green-400">00</div>
+                                <div class="text-sm text-white/70">Days</div>
+                            </div>
+                            <div class="text-center">
+                                <div id="hours" class="text-3xl text-green-400">00</div>
+                                <div class="text-sm text-white/70">Hours</div>
+                            </div>
+                            <div class="text-center">
+                                <div id="minutes" class="text-3xl text-green-400">00</div>
+                                <div class="text-sm text-white/70">Minutes</div>
+                            </div>
+                            <div class="text-center">
+                                <div id="seconds" class="text-3xl text-green-400">00</div>
+                                <div class="text-sm text-white/70">Seconds</div>
+                            </div>
+                        </div>
+                        <p class="text-white/80 text-sm mt-2">Don't miss out on significant savings!</p>
+                    </div>
+
+                    <div id="earlyBirdExpired" class="hidden glass rounded-xl p-4 mb-6 text-center bg-red-500/20 border-red-400/50">
+                        <h4 class="text-lg font-semibold text-white mb-2">⏰ Early Bird Offer Has Ended</h4>
+                        <p class="text-white/80 text-sm">Regular pricing is now in effect</p>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-medium text-white/90 mb-4">Select Registration Category *</label>
+                        <div class="space-y-4">
+                            <label class="flex items-center glass-radio p-6 rounded-xl cursor-pointer transition duration-300 hover:scale-105" id="studentEarlyLabel">
+                                <input type="radio" name="ticketType" value="student-early" class="text-blue-400 focus:ring-blue-400 border-white/30 bg-transparent" id="studentEarlyRadio">
+                                <div class="ml-4 flex-1">
+                                    <div class="flex justify-between items-center">
+                                        <span class="font-semibold text-white text-lg">Students / Academia (Early Bird)</span>
+                                        <div class="text-right">
+                                            <span class="text-green-400 font-bold text-xl" id="studentEarlyPrice">₹3,800</span>
+                                            <div class="text-white/50 line-through text-sm" id="studentRegularPriceStrike">₹4,720</div>
+                                        </div>
+                                    </div>
+                                    <p class="text-white/70 text-sm mt-1" id="studentEarlyDesc">Early Bird offer until 30 April 2026 - Save ₹920!</p>
+                                </div>
+                            </label>
+                            
+                            <label class="flex items-center glass-radio p-6 rounded-xl cursor-pointer transition duration-300 hover:scale-105" id="corporateEarlyLabel">
+                                <input type="radio" name="ticketType" value="corporate-early" class="text-blue-400 focus:ring-blue-400 border-white/30 bg-transparent" id="corporateEarlyRadio">
+                                <div class="ml-4 flex-1">
+                                    <div class="flex justify-between items-center">
+                                        <span class="font-semibold text-white text-lg">Corporate / Industry (Early Bird)</span>
+                                        <div class="text-right">
+                                            <span class="text-green-400 font-bold text-xl" id="corporateEarlyPrice">₹9,450</span>
+                                            <div class="text-white/50 line-through text-sm" id="corporateRegularPriceStrike">₹10,620</div>
+                                        </div>
+                                    </div>
+                                    <p class="text-white/70 text-sm mt-1" id="corporateEarlyDesc">Early Bird offer until 30 April 2026 - Save ₹1,170!</p>
+                                </div>
+                            </label>
+                            
+                            <label class="flex items-center glass-radio p-6 rounded-xl cursor-pointer transition duration-300 hover:scale-105" id="studentRegularLabel">
+                                <input type="radio" name="ticketType" value="student-regular" class="text-blue-400 focus:ring-blue-400 border-white/30 bg-transparent">
+                                <div class="ml-4 flex-1">
+                                    <div class="flex justify-between items-center">
+                                        <span class="font-semibold text-white text-lg">Students / Academia</span>
+                                        <span class="text-blue-400 font-bold text-xl">₹4,720</span>
+                                    </div>
+                                    <p class="text-white/70 text-sm mt-1">Regular pricing for students and academia</p>
+                                </div>
+                            </label>
+                            
+                            <label class="flex items-center glass-radio p-6 rounded-xl cursor-pointer transition duration-300 hover:scale-105" id="corporateRegularLabel">
+                                <input type="radio" name="ticketType" value="corporate-regular" class="text-blue-400 focus:ring-blue-400 border-white/30 bg-transparent">
+                                <div class="ml-4 flex-1">
+                                    <div class="flex justify-between items-center">
+                                        <span class="font-semibold text-white text-lg">Corporate / Industry</span>
+                                        <span class="text-blue-400 font-bold text-xl">₹10,620</span>
+                                    </div>
+                                    <p class="text-white/70 text-sm mt-1">Regular pricing for corporate and industry professionals</p>
+                                </div>
+                            </label>
+                            
+                            <label class="flex items-center glass-radio p-6 rounded-xl cursor-pointer transition duration-300 hover:scale-105">
+                                <input type="radio" name="ticketType" value="asi-member" class="text-blue-400 focus:ring-blue-400 border-white/30 bg-transparent">
+                                <div class="ml-4 flex-1">
+                                    <div class="flex justify-between items-center">
+                                        <span class="font-semibold text-white text-lg">ASI Members</span>
+                                        <span class="text-purple-400 font-bold text-xl">₹2,950</span>
+                                    </div>
+                                    <p class="text-white/70 text-sm mt-1">Special discounted rate for ASI members</p>
+                                </div>
+                            </label>
+                            
+                            <label class="flex items-center glass-radio p-6 rounded-xl cursor-pointer transition duration-300 hover:scale-105">
+                                <input type="radio" name="ticketType" value="international-author" class="text-blue-400 focus:ring-blue-400 border-white/30 bg-transparent">
+                                <div class="ml-4 flex-1">
+                                    <div class="flex justify-between items-center">
+                                        <span class="font-semibold text-white text-lg">International Authors</span>
+                                        <span class="text-yellow-400 font-bold text-xl">$120</span>
+                                    </div>
+                                    <p class="text-white/70 text-sm mt-1">For international participants presenting papers</p>
+                                </div>
+                            </label>
+                            
+                            <label class="flex items-center glass-radio p-6 rounded-xl cursor-pointer transition duration-300 hover:scale-105">
+                                <input type="radio" name="ticketType" value="international-attendee" class="text-blue-400 focus:ring-blue-400 border-white/30 bg-transparent">
+                                <div class="ml-4 flex-1">
+                                    <div class="flex justify-between items-center">
+                                        <span class="font-semibold text-white text-lg">International Attendees</span>
+                                        <span class="text-yellow-400 font-bold text-xl">$180</span>
+                                    </div>
+                                    <p class="text-white/70 text-sm mt-1">For international participants attending the conference</p>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Additional Information -->
+                <div class="space-y-6">
+                    <h3 class="text-xl font-medium text-white/90 border-b border-white/20 pb-3">Additional Information</h3>
+                    
+                    <div>
+                        <label for="comments" class="block text-sm font-medium text-white/90 mb-2">Additional Comments</label>
+                        <textarea id="comments" name="comments" rows="4" 
+                            class="w-full px-4 py-3 glass-input rounded-xl transition duration-300 ease-in-out resize-none"
+                            placeholder="Any special requests or comments..."></textarea>
+                    </div>
+                </div>
+
+                <!-- Terms and Conditions -->
+                <div class="space-y-4">
+                    <div class="flex items-start">
+                        <input type="checkbox" id="terms" name="terms" required
+                            class="mt-1 text-blue-400 focus:ring-blue-400 border-white/30 rounded bg-transparent">
+                        <label for="terms" class="ml-3 text-sm text-white/90">
+                            I agree to the <a href="#" class="text-blue-400 hover:text-blue-300 underline">Terms and Conditions</a> and 
+                            <a href="#" class="text-blue-400 hover:text-blue-300 underline">Privacy Policy</a> *
+                        </label>
+                    </div>
+                    
+                    <div class="flex items-start">
+                        <input type="checkbox" id="newsletter" name="newsletter"
+                            class="mt-1 text-blue-400 focus:ring-blue-400 border-white/30 rounded bg-transparent">
+                        <label for="newsletter" class="ml-3 text-sm text-white/90">
+                            Subscribe to our newsletter for future event updates
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Submit Button -->
+                <div class="pt-6">
+                    <!-- Selected Amount Display -->
+                    <div id="selectedAmountDisplay" class="hidden mb-6 p-4 glass-input rounded-xl border border-accent-blue/50">
+                        <div class="flex justify-between items-center text-lg">
+                            <span class="text-white/90">Selected Registration:</span>
+                            <span id="selectedRegistrationType" class="text-white font-medium"></span>
+                        </div>
+                        <div class="flex justify-between items-center text-xl font-bold mt-2">
+                            <span class="text-white">Total Amount:</span>
+                            <span id="selectedAmount" class="text-accent-yellow">₹0</span>
+                        </div>
+                        <div class="text-sm text-white/70 mt-2">
+                            <p>✓ Includes all applicable taxes</p>
+                            <p>✓ No additional fees at payment</p>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" 
+                        class="w-full glass-button text-white font-bold py-4 px-6 rounded-xl transition duration-300 ease-in-out shadow-2xl text-lg">
+                        Proceed to Payment
+                    </button>
+                </div>
+
+                <div class="text-center text-sm text-white/70 pt-4">
+                    <p>Questions? Contact us at <a href="mailto:info@smops2026.org" class="text-blue-400 hover:text-blue-300">info@smops2026.org</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Early Bird deadline - April 30, 2026 at 23:59:59
+        const earlyBirdDeadline = new Date('2026-04-30T23:59:59').getTime();
+        let isEarlyBirdActive = true;
+
+        // Registration type pricing mapping
+        const registrationPricing = {
+            'student-early': { name: 'Students / Academia (Early Bird)', price: '₹3,800' },
+            'corporate-early': { name: 'Corporate / Industry (Early Bird)', price: '₹9,450' },
+            'student-regular': { name: 'Students / Academia', price: '₹4,720' },
+            'corporate-regular': { name: 'Corporate / Industry', price: '₹10,620' },
+            'asi-member': { name: 'ASI Members', price: '₹2,950' },
+            'international-author': { name: 'International Authors', price: '$120' },
+            'international-attendee': { name: 'International Attendees', price: '$180' }
+        };
+
+        // Countdown timer function
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const timeLeft = earlyBirdDeadline - now;
+            
+            if (timeLeft > 0) {
+                const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+                
+                document.getElementById('days').textContent = days.toString().padStart(2, '0');
+                document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+                document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+                document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+            } else {
+                // Early bird period has ended
+                isEarlyBirdActive = false;
+                activateRegularPricing();
+            }
+        }
+
+        // Function to activate regular pricing when early bird ends
+        function activateRegularPricing() {
+            // Hide early bird timer and show expired message
+            document.getElementById('earlyBirdTimer').classList.add('hidden');
+            document.getElementById('earlyBirdExpired').classList.remove('hidden');
+            
+            // Hide early bird options completely
+            document.getElementById('studentEarlyLabel').style.display = 'none';
+            document.getElementById('corporateEarlyLabel').style.display = 'none';
+            
+            // Show regular options
+            document.getElementById('studentRegularLabel').style.display = 'flex';
+            document.getElementById('corporateRegularLabel').style.display = 'flex';
+            
+            // If early bird options were selected, auto-select regular options
+            const studentEarlyRadio = document.getElementById('studentEarlyRadio');
+            const corporateEarlyRadio = document.getElementById('corporateEarlyRadio');
+            
+            if (studentEarlyRadio.checked) {
+                studentEarlyRadio.checked = false;
+                document.querySelector('input[value="student-regular"]').checked = true;
+                updateAmountDisplay();
+            }
+            
+            if (corporateEarlyRadio.checked) {
+                corporateEarlyRadio.checked = false;
+                document.querySelector('input[value="corporate-regular"]').checked = true;
+                updateAmountDisplay();
+            }
+            
+            // Update pricing object - remove early bird and add regular
+            delete registrationPricing['student-early'];
+            delete registrationPricing['corporate-early'];
+            registrationPricing['student-regular'] = { name: 'Students / Academia', price: '₹4,720' };
+            registrationPricing['corporate-regular'] = { name: 'Corporate / Industry', price: '₹10,620' };
+            
+            // Show notification
+            showPricingChangeNotification();
+        }
+
+        // Function to setup initial pricing display
+        function setupInitialPricing() {
+            const now = new Date().getTime();
+            
+            if (now >= earlyBirdDeadline) {
+                // Early bird has expired, hide early bird options from the start
+                isEarlyBirdActive = false;
+                document.getElementById('earlyBirdTimer').style.display = 'none';
+                document.getElementById('earlyBirdExpired').classList.remove('hidden');
+                document.getElementById('studentEarlyLabel').style.display = 'none';
+                document.getElementById('corporateEarlyLabel').style.display = 'none';
+                
+                // Remove early bird from pricing object
+                delete registrationPricing['student-early'];
+                delete registrationPricing['corporate-early'];
+            } else {
+                // Early bird is active, hide regular options during early bird period
+                document.getElementById('studentRegularLabel').style.display = 'none';
+                document.getElementById('corporateRegularLabel').style.display = 'none';
+                
+                // Remove regular options from pricing object during early bird
+                delete registrationPricing['student-regular'];
+                delete registrationPricing['corporate-regular'];
+                
+                // Start countdown timer
+                updateCountdown();
+                setInterval(updateCountdown, 1000);
+            }
+        }
+
+        // Show notification when pricing changes
+        function showPricingChangeNotification() {
+            const notification = document.createElement('div');
+            notification.className = 'fixed top-4 right-4 bg-red-500/90 text-white p-4 rounded-xl shadow-2xl z-50 transform translate-x-full transition-transform duration-500';
+            notification.innerHTML = `
+                <div class="flex items-center">
+                    <svg class="w-6 h-6 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"></path>
+                    </svg>
+                    <div>
+                        <div class="font-semibold">Early Bird Offer Expired!</div>
+                        <div class="text-sm">Regular pricing is now in effect</div>
+                    </div>
+                </div>
+            `;
+            
+            document.body.appendChild(notification);
+            
+            // Slide in
+            setTimeout(() => {
+                notification.style.transform = 'translateX(0)';
+            }, 100);
+            
+            // Auto remove after 5 seconds
+            setTimeout(() => {
+                notification.style.transform = 'translateX(full)';
+                setTimeout(() => {
+                    document.body.removeChild(notification);
+                }, 500);
+            }, 5000);
+        }
+
+        // Function to update the amount display
+        function updateAmountDisplay() {
+            const selectedTicket = document.querySelector('input[name="ticketType"]:checked');
+            const amountDisplay = document.getElementById('selectedAmountDisplay');
+            const registrationTypeElement = document.getElementById('selectedRegistrationType');
+            const amountElement = document.getElementById('selectedAmount');
+            
+            if (selectedTicket) {
+                const ticketValue = selectedTicket.value;
+                const pricing = registrationPricing[ticketValue];
+                
+                if (pricing) {
+                    registrationTypeElement.textContent = pricing.name;
+                    amountElement.textContent = pricing.price;
+                    amountDisplay.classList.remove('hidden');
+                    
+                    // Smooth fade-in animation
+                    amountDisplay.style.opacity = '0';
+                    setTimeout(() => {
+                        amountDisplay.style.transition = 'opacity 0.3s ease-in-out';
+                        amountDisplay.style.opacity = '1';
+                    }, 10);
+                }
+            } else {
+                amountDisplay.classList.add('hidden');
+            }
+        }
+
+        // Add event listeners to all radio buttons
+        document.addEventListener('DOMContentLoaded', function() {
+            // Setup initial pricing display based on current time
+            setupInitialPricing();
+            
+            const ticketRadios = document.querySelectorAll('input[name="ticketType"]');
+            ticketRadios.forEach(radio => {
+                radio.addEventListener('change', updateAmountDisplay);
+            });
+        });
+
+        document.getElementById('registrationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Basic form validation
+            const requiredFields = ['firstName', 'lastName', 'email', 'terms'];
+            let isValid = true;
+            
+            requiredFields.forEach(field => {
+                const input = document.getElementById(field);
+                if (!input.value.trim() && field !== 'terms') {
+                    isValid = false;
+                    input.classList.add('border-red-400');
+                } else if (field === 'terms' && !input.checked) {
+                    isValid = false;
+                } else {
+                    input.classList.remove('border-red-400');
+                }
+            });
+            
+            // Check if ticket type is selected
+            const ticketTypes = document.querySelectorAll('input[name="ticketType"]');
+            const ticketSelected = Array.from(ticketTypes).some(radio => radio.checked);
+            if (!ticketSelected) {
+                isValid = false;
+                alert('Please select a registration category.');
+                return;
+            }
+            
+            // Check if early bird option is selected but expired
+            const selectedTicket = document.querySelector('input[name="ticketType"]:checked');
+            if (!isEarlyBirdActive && (selectedTicket.value === 'student-early' || selectedTicket.value === 'corporate-early')) {
+                alert('Early Bird offer has expired. Please select a regular pricing option.');
+                return;
+            }
+            
+            if (isValid) {
+                // Get selected ticket type and user name
+                const selectedTicketValue = selectedTicket.value;
+                const firstName = document.getElementById('firstName').value;
+                const lastName = document.getElementById('lastName').value;
+                const fullName = `${firstName} ${lastName}`;
+                
+                // Store data for payment page
+                localStorage.setItem('registrationType', selectedTicketValue);
+                localStorage.setItem('attendeeName', fullName);
+                localStorage.setItem('attendeeEmail', document.getElementById('email').value);
+                const countryCode = document.getElementById('countryCode').value;
+                const phoneNumber = document.getElementById('phone').value;
+                const fullPhoneNumber = phoneNumber ? `${countryCode} ${phoneNumber}` : '';
+                localStorage.setItem('attendeePhone', fullPhoneNumber);
+                localStorage.setItem('attendeeCompany', document.getElementById('company').value);
+                
+                // Show success message and redirect
+                const submitBtn = document.querySelector('button[type="submit"]');
+                const originalText = submitBtn.innerHTML;
+                submitBtn.innerHTML = '<svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white inline" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>Proceeding to Payment...';
+                submitBtn.disabled = true;
+                
+                setTimeout(() => {
+                    // Redirect to payment page with parameters
+                    window.location.href = `payment.html?type=${selectedTicketValue}&name=${encodeURIComponent(fullName)}`;
+                }, 2000);
+            } else {
+                alert('Please fill in all required fields.');
+            }
+        });
+    </script>
+</body>
+</html>
